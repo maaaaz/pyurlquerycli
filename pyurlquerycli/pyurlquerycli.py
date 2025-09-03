@@ -16,7 +16,7 @@ from w3lib.url import safe_url_string
 import validators
 
 # Script version
-VERSION = '1.0'
+VERSION = '1.3'
 
 # Options definition
 parser = argparse.ArgumentParser(description="version: " + VERSION)

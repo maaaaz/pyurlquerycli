@@ -31,6 +31,7 @@ common parameters:
 
 Changelog
 ---------
+* version 1.3 - 2025-09-03: Migration to pyproject.toml after few tests (v1.1, v1.2)
 * version 1.0 - 2025-08-03: Initial commit
 
 Copyright and license
