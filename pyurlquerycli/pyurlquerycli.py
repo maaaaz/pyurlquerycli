@@ -4,8 +4,6 @@
 import os
 import sys
 import argparse
-import functools
-import concurrent.futures
 import requests
 import time
 
@@ -15,8 +13,11 @@ import pprint
 from w3lib.url import safe_url_string
 import validators
 
-# Script version
-VERSION = '1.3'
+# Globals
+VERSION = '1.4'
+
+API_BASE_URL = 'https://api.urlquery.net/public/v1'
+API_ENV_VAR = 'SECRET_URLQUERY_APIKEY'
 
 # Options definition
 parser = argparse.ArgumentParser(description="version: " + VERSION)
@@ -24,11 +25,8 @@ parser.add_argument('scope', help = 'Action to do on urlquery.net (default \'sub
 
 common_group = parser.add_argument_group('common parameters')
 common_group.add_argument('-i', '--input-file', help='Input file (either list of newline-separated FQDN or URL (for submitting) || submission UUID (for checking reports)', required = True)
-common_group.add_argument('-k', '--api-key', help='API key (could either be provided in the "SECRET_URLQUERY_APIKEY" env var)', type = str)
+common_group.add_argument('-k', '--api-key', help='API key (could either be provided in the "%s" env var)' % API_ENV_VAR, type = str)
 
-# Globals
-API_BASE_URL = 'https://api.urlquery.net/public/v1'
-API_ENV_VAR = 'SECRET_URLQUERY_APIKEY'
 
 def urlquery_check(options):
     retval = os.EX_OK

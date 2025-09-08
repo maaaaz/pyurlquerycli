@@ -3,13 +3,14 @@ pyurlquerycli
 
 Description
 -----------
-A simple script to interact with urlquery.net APIs from cli.
+A simple script to interact with urlquery.net APIs from CLI.
 
 
 Usage
 -----
 ```
-$ python3 -Wall pyurlquerycli/pyurlquerycli.py -h
+$ pip install pyurlquerycli
+$ pyurlquerycli.py -h
 usage: pyurlquerycli.py [-h] -i INPUT_FILE [-k API_KEY] [{submit,check}]
 
 version: 1.0
