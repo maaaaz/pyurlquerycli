@@ -10,29 +10,29 @@ Usage
 -----
 ```
 $ pip install pyurlquerycli
-$ pyurlquerycli.py -h
+$ pyurlquerycli -h
 usage: pyurlquerycli.py [-h] -i INPUT_FILE [-k API_KEY] [{submit,check}]
 
-version: 1.0
+version: 1.4
 
 positional arguments:
   {submit,check}        Action to do on urlquery.net (default 'submit')
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
 
 common parameters:
-  -i INPUT_FILE, --input-file INPUT_FILE
-                        Input file (either list of newline-separated FQDN or URL (for submitting) || submission UUID (for
-                        checking reports)
-  -k API_KEY, --api-key API_KEY
+  -i, --input-file INPUT_FILE
+                        Input file (either list of newline-separated FQDN or URL (for submitting) || submission UUID (for checking
+                        reports)
+  -k, --api-key API_KEY
                         API key (could either be provided in the "SECRET_URLQUERY_APIKEY" env var)
 ```
   
 
 Changelog
 ---------
-* version 1.3 - 2025-09-03: Migration to pyproject.toml after few tests (v1.1, v1.2)
+* version 1.3->1.4 - 2025-09-03: Migration to pyproject.toml after few tests
 * version 1.0 - 2025-08-03: Initial commit
 
 Copyright and license
