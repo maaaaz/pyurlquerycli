@@ -14,7 +14,7 @@ from w3lib.url import safe_url_string
 import validators
 
 # Globals
-VERSION = '1.4'
+VERSION = '1.5'
 
 API_BASE_URL = 'https://api.urlquery.net/public/v1'
 API_ENV_VAR = 'SECRET_URLQUERY_APIKEY'
@@ -90,13 +90,22 @@ def urlquery_submit(options):
                 line = line.strip()
                 if line:
                     if line.startswith(('http://', 'https://')):
-                        entries = [safe_url_string(line)]
+                        if validators.url(line):
+                            entry = safe_url_string(line)
+                            if validators.url(entry):
+                                malicious_urls.append(entry)
                     else:
-                        entries = [safe_url_string('http://'+line), safe_url_string('https://'+line)]
+                        entry_http_raw = 'http://' + line
+                        if validators.url(entry_http_raw):
+                            entry_http = safe_url_string(entry_http_raw)
+                            if validators.url(entry_http):
+                                malicious_urls.append(entry_http)
                     
-                    for entry in entries:
-                        if validators.url(entry):
-                            malicious_urls.append(entry)
+                        entry_https_raw = 'https://' + line
+                        if validators.url(entry_https_raw):
+                            entry_https = safe_url_string(entry_https_raw)
+                            if validators.url(entry_https):
+                                malicious_urls.append(entry_https)
         
         if malicious_urls:
             #pprint.pprint(malicious_urls)
